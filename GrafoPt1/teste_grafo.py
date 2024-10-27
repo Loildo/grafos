@@ -9,7 +9,7 @@ grafo_adj = MatrizAdjacencia(5)
 
 grafo_adj.adicionar_aresta(1, 2)
 grafo_adj.adicionar_aresta(2, 3)
-grafo_adj.adicionar_aresta(3, 4)
+grafo_adj.adicionar_aresta(3, 4) 
 
 # qtd_arestas = int(input("Informe a qtd de arestas: "))
 # for i in range(qtd_arestas):
