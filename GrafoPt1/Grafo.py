@@ -6,8 +6,12 @@ class MatrizAdjacencia:
         self.matriz = [[0] * num_vertices for _ in range(num_vertices)]
 
     def adicionar_aresta(self, v1, v2):
-        self.matriz[v1][v2] = 1
-        self.matriz[v2][v1] = 1  # Para grafos não direcionados
+        self.matriz[v1-1][v2-1] = 1
+        self.matriz[v2-1][v1-1] = 1  # Para grafos não direcionados
+
+    def remover_aresta(self, v1, v2):
+        self.matriz[v1-1][v2-1] = 0
+        self.matriz[v2-1][v1-1] = 0
 
     def exibir(self):
         for linha in self.matriz:
