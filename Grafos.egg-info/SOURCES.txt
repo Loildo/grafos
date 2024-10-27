@@ -1,0 +1,11 @@
+LICENCE
+README.md
+setup.py
+GrafoPt1/Grafo.py
+GrafoPt1/__init__.py
+GrafoPt1/teste_grafo.py
+Grafos.egg-info/PKG-INFO
+Grafos.egg-info/SOURCES.txt
+Grafos.egg-info/dependency_links.txt
+Grafos.egg-info/requires.txt
+Grafos.egg-info/top_level.txt
