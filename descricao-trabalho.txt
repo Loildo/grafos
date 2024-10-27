@@ -1,0 +1,26 @@
+Parte 1
+
+Desenvolver uma biblioteca para a manipulação de grafos, contendo:
+
+Representações
+
+Representação de grafos utilizando Matriz de Adjacência
+Representação de grafos utilizando Matriz de Incidência
+Representação de grafos utilizando Lista de Adjacência
+
+
+Manipulação
+Funções básicas para manipulação de grafos em ambas representações, incluindo:
+
+[ OK ] - Criação de um grafo com X vértices (o número de vértices deve ser inserido pelo usuário)
+[ OK ] - Criação e remoção de arestas
+[ ROTULO ] - Ponderação e rotulação de vértices
+[ OK ] - Ponderação e rotulação de arestas
+[  ] - Checagem de adjacência entre vértices
+[  ] - Checagem de adjacência entre arestas
+[ OK ] - Checagem da existência de arestas
+[ OK ] - Checagem da quantidade de vértices e arestas
+[ OK ] - Checagem de grafo vazio e completo
+[  ] - Checagem de conectividade em simplismente conexo, semi-fortemente conexo e fortemente conexo
+[  ] - Checagem de quantidade de componentes fortemente conexos com Kosaraju
+[  ] - Checagem de ponte e articulação
