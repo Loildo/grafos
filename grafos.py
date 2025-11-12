@@ -8,14 +8,16 @@ from grafo_utils.analises import (
     exibir_fecho_transitivo
 )
 from grafo_utils.caminhos import (
-    exibir_arvore_geradora_minima,
-    exibir_caminho_minimo
+    calcular_arvore_geradora_minima,
+    calcular_caminho_minimo
 )
 from grafo_utils.visualizacao import (
     mostrar_grafo,
     mostrar_dfs,
     mostrar_bfs,
-    mostrar_fecho_transitivo
+    mostrar_fecho_transitivo,
+    mostrar_caminho_minimo,
+    mostrar_arvore_geradora_minima
 )
 
 # ------------------------------------------------------
@@ -59,12 +61,14 @@ for n, d in sequencia_de_graus(G):
 # ------------------------------------------------------
 # Caminho Mínimo
 # ------------------------------------------------------
-exibir_caminho_minimo(G, inicio, fim)
+dados_caminho = calcular_caminho_minimo(G, inicio, fim)
+mostrar_caminho_minimo(G, dados_caminho)
 
 # ------------------------------------------------------
 # Árvore Geradora Mínima
 # ------------------------------------------------------
-exibir_arvore_geradora_minima(G, inicio)
+mst = calcular_arvore_geradora_minima(G, inicio)
+mostrar_arvore_geradora_minima(G, mst, inicio)
 
 # ------------------------------------------------------
 # Fecho Transitivo

@@ -108,3 +108,64 @@ def mostrar_fecho_transitivo(grafo, vertice, dados_fecho):
     nx.draw_networkx_edge_labels(grafo, pos, edge_labels=labels)
     plt.axis("off")
     plt.show()
+
+
+def mostrar_caminho_minimo(grafo, dados_caminho):
+    """
+    Exibe graficamente o caminho mínimo no grafo.
+    """
+    if not dados_caminho["caminho"]:
+        return
+
+    caminho = dados_caminho["caminho"]
+    distancia = dados_caminho["distancia"]
+
+    plt.figure(figsize=(8, 6))
+    pos = nx.spring_layout(grafo, seed=42)
+
+    edge_params = {"arrows": grafo.is_directed()}
+    if grafo.is_directed():
+        edge_params.update({"arrowstyle": "-|>", "arrowsize": 20})
+
+    # Arestas gerais em cinza
+    nx.draw_networkx_edges(grafo, pos, edge_color="lightgray", width=2, **edge_params)
+    # Arestas do caminho mínimo em vermelho
+    edges_path = list(zip(caminho[:-1], caminho[1:]))
+    nx.draw_networkx_edges(grafo, pos, edgelist=edges_path, edge_color="red", width=3, **edge_params)
+
+    nx.draw_networkx_nodes(grafo, pos, node_color="lightblue", node_size=1000)
+    nx.draw_networkx_labels(grafo, pos, font_size=12, font_weight="bold")
+
+    labels = nx.get_edge_attributes(grafo, "peso")
+    nx.draw_networkx_edge_labels(grafo, pos, edge_labels=labels)
+
+    plt.title(f"Caminho Mínimo de {caminho[0]} a {caminho[-1]} (distância: {distancia})", fontsize=14)
+    plt.axis("off")
+    plt.show()
+
+
+def mostrar_arvore_geradora_minima(grafo, mst, vertice_inicial):
+    """
+    Exibe graficamente a Árvore Geradora Mínima (MST).
+    """
+    if mst is None:
+        return
+
+    plt.figure(figsize=(8, 6))
+    pos = nx.spring_layout(mst, seed=42)
+
+    nx.draw(
+        mst, pos,
+        with_labels=True,
+        node_color="lightgreen",
+        node_size=1000,
+        font_weight="bold",
+        edge_color="green"
+    )
+
+    labels = nx.get_edge_attributes(mst, "peso")
+    nx.draw_networkx_edge_labels(mst, pos, edge_labels=labels)
+
+    plt.title(f"Árvore Geradora Mínima (a partir de {vertice_inicial})", fontsize=14)
+    plt.axis("off")
+    plt.show()
