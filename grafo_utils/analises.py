@@ -1,5 +1,4 @@
 import networkx as nx
-import matplotlib.pyplot as plt
 
 def dfs_caminho(grafo, vertice_inicial):
     """
