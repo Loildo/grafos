@@ -35,33 +35,29 @@ def sequencia_de_graus(grafo):
     return graus
 
 def exibir_fecho_transitivo(grafo, vertice):
+    """
+    Calcula o fecho transitivo de um vértice.
+    Retorna um dicionário com os conjuntos de vértices.
+    """
     if grafo.is_directed():
         fecho_direto = nx.descendants(grafo, vertice)
         fecho_inverso = nx.ancestors(grafo, vertice)
         print(f"\n➡️ Fecho Direto de {vertice}: {sorted(fecho_direto)}")
         print(f"⬅️ Fecho Inverso de {vertice}: {sorted(fecho_inverso)}")
 
-        plt.figure(figsize=(8, 6))
-        pos = nx.spring_layout(grafo, seed=42)
-        nx.draw(grafo, pos, node_color="lightgray", with_labels=True, node_size=800, arrows=True)
-        nx.draw_networkx_nodes(grafo, pos, nodelist=fecho_direto, node_color="skyblue", node_size=900)
-        nx.draw_networkx_nodes(grafo, pos, nodelist=fecho_inverso, node_color="lightgreen", node_size=900)
-        nx.draw_networkx_nodes(grafo, pos, nodelist=[vertice], node_color="red", node_size=1000)
-        plt.title(f"Fecho Transitivo de {vertice}")
-        plt.axis("off")
-        plt.show()
+        return {
+            "tipo": "direcionado",
+            "direto": fecho_direto,
+            "inverso": fecho_inverso,
+        }
 
     else:
         fecho = nx.node_connected_component(grafo, vertice)
         print(f"\n🌐 Fecho Transitivo de {vertice}: {sorted(fecho)}")
-        plt.figure(figsize=(8, 6))
-        pos = nx.spring_layout(grafo, seed=42)
-        nx.draw(grafo, pos, node_color="lightgray", with_labels=True, node_size=800)
-        nx.draw_networkx_nodes(grafo, pos, nodelist=fecho, node_color="skyblue", node_size=900)
-        nx.draw_networkx_nodes(grafo, pos, nodelist=[vertice], node_color="red", node_size=1000)
-        plt.title(f"Fecho Transitivo de {vertice}")
-        plt.axis("off")
-        plt.show()
+        return {
+            "tipo": "nao_direcionado",
+            "fecho": fecho,
+        }
 
 def bfs_caminho(grafo, vertice_inicial):
     """

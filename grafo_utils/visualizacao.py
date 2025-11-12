@@ -75,3 +75,36 @@ def mostrar_bfs(grafo, caminho, arestas_bfs):
     plt.title(f"Árvore BFS a partir do vértice '{caminho[0]}'", fontsize=14)
     plt.axis("off")
     plt.show()
+
+
+def mostrar_fecho_transitivo(grafo, vertice, dados_fecho):
+    """
+    Exibe graficamente o fecho transitivo calculado.
+    Para grafos direcionados: fecho direto (azul) e inverso (verde).
+    Para não-direcionados: fecho (azul).
+    """
+    plt.figure(figsize=(8, 6))
+    pos = nx.spring_layout(grafo, seed=42)
+
+    if dados_fecho["tipo"] == "direcionado":
+        fecho_direto = dados_fecho["direto"]
+        fecho_inverso = dados_fecho["inverso"]
+
+        edge_params = {"arrows": True, "arrowstyle": "-|>", "arrowsize": 20}
+        nx.draw(grafo, pos, node_color="lightgray", with_labels=True, node_size=800, **edge_params)
+        nx.draw_networkx_nodes(grafo, pos, nodelist=fecho_direto, node_color="skyblue", node_size=900)
+        nx.draw_networkx_nodes(grafo, pos, nodelist=fecho_inverso, node_color="lightgreen", node_size=900)
+        nx.draw_networkx_nodes(grafo, pos, nodelist=[vertice], node_color="red", node_size=1000)
+        plt.title(f"Fecho Transitivo de {vertice} (Direto e Inverso)", fontsize=14)
+
+    else:
+        fecho = dados_fecho["fecho"]
+        nx.draw(grafo, pos, node_color="lightgray", with_labels=True, node_size=800)
+        nx.draw_networkx_nodes(grafo, pos, nodelist=fecho, node_color="skyblue", node_size=900)
+        nx.draw_networkx_nodes(grafo, pos, nodelist=[vertice], node_color="red", node_size=1000)
+        plt.title(f"Fecho Transitivo de {vertice}", fontsize=14)
+
+    labels = nx.get_edge_attributes(grafo, "peso")
+    nx.draw_networkx_edge_labels(grafo, pos, edge_labels=labels)
+    plt.axis("off")
+    plt.show()

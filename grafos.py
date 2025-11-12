@@ -11,7 +11,12 @@ from grafo_utils.caminhos import (
     exibir_arvore_geradora_minima,
     exibir_caminho_minimo
 )
-from grafo_utils.visualizacao import mostrar_grafo, mostrar_dfs, mostrar_bfs
+from grafo_utils.visualizacao import (
+    mostrar_grafo,
+    mostrar_dfs,
+    mostrar_bfs,
+    mostrar_fecho_transitivo
+)
 
 # ------------------------------------------------------
 # Criação do grafo via entrada do usuário
@@ -64,4 +69,5 @@ exibir_arvore_geradora_minima(G, inicio)
 # ------------------------------------------------------
 # Fecho Transitivo
 # ------------------------------------------------------
-exibir_fecho_transitivo(G, fecho_transitivo)
+dados_fecho = exibir_fecho_transitivo(G, fecho_transitivo)
+mostrar_fecho_transitivo(G, fecho_transitivo, dados_fecho)
