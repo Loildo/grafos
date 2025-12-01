@@ -14,7 +14,7 @@ def mostrar_grafo(grafo, direcionado, titulo="Grafo"):
     )
     labels = nx.get_edge_attributes(grafo, 'peso')
     nx.draw_networkx_edge_labels(grafo, pos, edge_labels=labels)
-    plt.title(titulo)
+    plt.title("Grafo Original", fontsize=14)
     plt.axis("off")
     plt.show()
 

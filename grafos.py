@@ -20,58 +20,27 @@ from grafo_utils.visualizacao import (
     mostrar_arvore_geradora_minima
 )
 
-# ------------------------------------------------------
-# Criação do grafo via entrada do usuário
-# ------------------------------------------------------
 G, direcionado, inicio, fim, fecho_transitivo = criar_grafo_interativo()
 
-# ------------------------------------------------------
-# Visualização do grafo
-# ------------------------------------------------------
-mostrar_grafo(G, direcionado, "Grafo Original")
-
-# ------------------------------------------------------
-# Busca em Profundidade (DFS)
-# ------------------------------------------------------
-caminho_dfs, arestas_dfs = dfs_caminho(G, inicio)
-print(f"\n🔹 Caminho em profundidade (DFS) a partir de '{inicio}': {caminho_dfs}")
-mostrar_dfs(G, caminho_dfs, arestas_dfs)
-
-# ------------------------------------------------------
-# Busca em Largura (BFS)
-# ------------------------------------------------------
-caminho_bfs, arestas_bfs = bfs_caminho(G, inicio)
-print(f"\n🔹 Caminho em largura (BFS) a partir de '{inicio}': {caminho_bfs}")
-mostrar_bfs(G, caminho_bfs, arestas_bfs)
-
-# ------------------------------------------------------
-# Ciclos
-# ------------------------------------------------------
-ciclos = ciclos_networkx(G)
-print(f"\nCiclos encontrados: {ciclos}")
-print(f"Tem ciclo? {'Sim' if detectar_ciclo(G) else 'Não'}")
-
-# ------------------------------------------------------
-# Sequência de Graus
-# ------------------------------------------------------
 print("\nSequência de graus (ordenada):")
 for n, d in sequencia_de_graus(G):
     print(f" - {n}: {d}")
 
-# ------------------------------------------------------
-# Caminho Mínimo
-# ------------------------------------------------------
+mostrar_grafo(G, direcionado, "Grafo Original")
+
+caminho_dfs, arestas_dfs = dfs_caminho(G, inicio)
+print(f"\n🔹 Caminho em profundidade (DFS) a partir de '{inicio}': {caminho_dfs}")
+mostrar_dfs(G, caminho_dfs, arestas_dfs)
+
+caminho_bfs, arestas_bfs = bfs_caminho(G, inicio)
+print(f"\n🔹 Caminho em largura (BFS) a partir de '{inicio}': {caminho_bfs}")
+mostrar_bfs(G, caminho_bfs, arestas_bfs)
+
 dados_caminho = calcular_caminho_minimo(G, inicio, fim)
 mostrar_caminho_minimo(G, dados_caminho)
 
-# ------------------------------------------------------
-# Árvore Geradora Mínima
-# ------------------------------------------------------
 mst = calcular_arvore_geradora_minima(G, inicio)
 mostrar_arvore_geradora_minima(G, mst, inicio)
 
-# ------------------------------------------------------
-# Fecho Transitivo
-# ------------------------------------------------------
 dados_fecho = exibir_fecho_transitivo(G, fecho_transitivo)
 mostrar_fecho_transitivo(G, fecho_transitivo, dados_fecho)
